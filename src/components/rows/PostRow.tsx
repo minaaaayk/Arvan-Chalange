@@ -1,10 +1,10 @@
 import React from "react";
 import { Dropdown } from "react-bootstrap";
-import styled from "styled-components";
 import { IPost } from "../../@types";
-import { Color, Path } from "../../constants";
+import { Path } from "../../constants";
 import { ColumnItem, RowItem } from "../tableComponents/TableComponents";
 import { FlexWrapper } from "../wrappers/FlexWrapper";
+import { ActionColumn, BodyColumn, CustomDropdown } from "./PostRowStyles";
 
 interface IProps {
   post: IPost;
@@ -27,13 +27,7 @@ export const PostRow: React.FC<IProps> = ({
       <ColumnItem>
         {tagList?.length > 0 && <>{tagList?.join(", ")}</>}
       </ColumnItem>
-      <ColumnItem
-        style={{
-          maxWidth: "20rem",
-        }}
-      >
-        {body}
-      </ColumnItem>
+      <BodyColumn>{body}</BodyColumn>
 
       <ActionColumn>
         <FlexWrapper
@@ -62,20 +56,3 @@ export const PostRow: React.FC<IProps> = ({
     </RowItem>
   );
 };
-
-const CustomDropdown = styled(Dropdown)`
-  & > .dropdown-toggle,
-  &.show > .btn-info.dropdown-toggle {
-    color: ${Color.BS_white};
-  }
-
-  & > .dropdown-menu.show {
-    transform: translate(-110px, 40px) !important;
-  }
-`;
-
-const ActionColumn = styled(ColumnItem)`
-  padding: 0 0.5rem;
-  overflow: inherit;
-  max-width: 7.5rem;
-`;
