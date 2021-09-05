@@ -8,3 +8,7 @@ export const P = styled.span<{ color?: string; fontSize?: string }>`
 
   margin: 0 0.25rem;
 `;
+
+export const BoldP = styled(P)`
+  font-weight: bold;
+`;

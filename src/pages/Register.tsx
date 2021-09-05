@@ -12,7 +12,7 @@ import {
   LoginRow,
   LoginTitle,
 } from "../components/login/LoginComponents";
-import { P } from "../components/paragraph/P";
+import { BoldP, P } from "../components/paragraph/P";
 import { FlexWrapper } from "../components/wrappers/FlexWrapper";
 import { LoginWrapper } from "../components/wrappers/LoginWrapper";
 import { Path } from "../constants/Path";
@@ -62,9 +62,9 @@ export const Register: React.FC = () => {
               </LoginRow>
               <FlexWrapper>
                 <P>Already Registered?</P>
-                <P style={{ fontWeight: "bold" }}>
+                <BoldP>
                   <a href={Path.login}>Login</a>
-                </P>
+                </BoldP>
               </FlexWrapper>
             </LoginForm>
           </FormProvider>
