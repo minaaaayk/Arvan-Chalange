@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert } from "react-bootstrap";
+import { TableAlert } from "./tableComponents/TableAlert";
 import { TableFooter } from "./tableComponents/TableFooter";
 import { TableTitle } from "./tableComponents/TableTitle";
 import { FlexWrapper } from "./wrappers/FlexWrapper";
@@ -26,10 +26,10 @@ export const TableCard: React.FC<IProps> = ({
         </FlexWrapper>
 
         {message && (
-          <Alert variant="success" style={{ minWidth: "max-content" }}>
+          <TableAlert variant="success">
             <strong>Well done!</strong>
             {message}
-          </Alert>
+          </TableAlert>
         )}
       </FlexWrapper>
 
