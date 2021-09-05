@@ -1,6 +1,7 @@
 import React, { ElementType, InputHTMLAttributes } from "react";
 import { Form } from "react-bootstrap";
 import { useFormContext } from "react-hook-form";
+import styled from "styled-components";
 import { Error } from "./Error";
 
 interface IInput extends InputHTMLAttributes<HTMLInputElement> {
@@ -30,7 +31,7 @@ export const InputLabel: React.FC<IInput> = ({
     formState: { errors },
   } = useFormContext();
   return (
-    <Form.Group controlId={name} style={{ width: "100%" }}>
+    <FormGroup controlId={name}>
       <Form.Label>
         {errors && errors[name] ? <Error>{label}</Error> : `${label}`}
       </Form.Label>
@@ -50,6 +51,10 @@ export const InputLabel: React.FC<IInput> = ({
       <Error isMessage>
         {errors && errors[name] ? errors[name].message : ""}
       </Error>
-    </Form.Group>
+    </FormGroup>
   );
 };
+
+const FormGroup = styled(Form.Group)`
+  width: 100%;
+`;
