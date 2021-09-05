@@ -28,3 +28,7 @@ input {
 .react-blur-canvas {
   flex: 100%;
 }
+
+.table-responsive-sm {
+  width: 100%;
+}

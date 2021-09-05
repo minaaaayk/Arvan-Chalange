@@ -1,4 +1,5 @@
 import React from "react";
+import { Table } from "react-bootstrap";
 import styled from "styled-components";
 import { ITableHeader } from "../../@types";
 import { Color } from "../../constants";
@@ -10,35 +11,43 @@ interface IProps {
   TableBody?: React.FC;
 }
 
+// TODO: make more responsive
 export const TableMainContent: React.FC<IProps> = ({
   tableHeader,
   TableBody,
   children,
-}) => {
-  return (
-    <MainContainer>
-      <Header>
-        <HeaderRow>
-          {tableHeader.map(({ title, Icon }, index) => (
-            <HeaderItem key={index}>
-              <FlexWrapper>{title}</FlexWrapper>
-            </HeaderItem>
-          ))}
-        </HeaderRow>
-      </Header>
+}) => (
+  <MainContainer responsive="sm">
+    <Header>
+      <HeaderRow>
+        {tableHeader.map(({ title }, index) => (
+          <HeaderItem key={index}>
+            <FlexWrapper>{title}</FlexWrapper>
+          </HeaderItem>
+        ))}
+      </HeaderRow>
+    </Header>
 
-      {/* FIXME we don't need `TableBody` anymore. it should be handled using children */}
-      <TBody>{children || (TableBody && <TableBody />)}</TBody>
-    </MainContainer>
-  );
-};
+    {/* FIXME we don't need `TableBody` anymore. it should be handled using children */}
+    <TBody>{children || (TableBody && <TableBody />)}</TBody>
+  </MainContainer>
+);
 
-const MainContainer = styled.table`
+const MainContainer = styled(Table)`
   width: 100%;
   margin-top: 1.5rem;
   border-spacing: 0;
   text-align: right;
   vertical-align: center;
+
+  tbody,
+  td,
+  tfoot,
+  th,
+  thead,
+  tr {
+    vertical-align: baseline;
+  }
 `;
 
 const Header = styled.thead`
@@ -59,5 +68,6 @@ const HeaderItem = styled.th`
   padding: 10px 0.5rem;
   margin: 0;
 
+  border: none;
   color: ${Color.BS_gray_700};
 `;

@@ -22,14 +22,12 @@ export const PostRow: React.FC<IProps> = ({
   onDeleteClick,
 }) => {
   const timeStamp = new Date(createdAt);
-  console.log("----------------------------------------------");
-  console.log("offset: ", offset);
-  console.log("limit: ", limit);
-  console.log("index: ", index);
 
   return (
     <RowItem key={index}>
-      <ColumnItem>{(offset - 1) * limit + index + 1}</ColumnItem>
+      <ColumnItem>
+        {(offset - 1 < 0 ? 0 : offset - 1) * limit + index + 1}
+      </ColumnItem>
 
       <ColumnItem>{title}</ColumnItem>
       <ColumnItem>{author.username}</ColumnItem>
