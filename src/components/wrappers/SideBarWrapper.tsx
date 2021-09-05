@@ -1,12 +1,15 @@
+import { Col } from "react-bootstrap";
 import styled from "styled-components";
 import { Color } from "../../constants";
 
-export const SideBarWrapper = styled.div`
+export const SideBarWrapper = styled(Col)`
   display: flex;
   flex-direction: column;
 
-  height: 100%;
+  min-height: 100%;
   width: 100%;
+
+  max-width: 250px;
 
   overflow: auto;
   background-color: ${Color.BS_blue};
