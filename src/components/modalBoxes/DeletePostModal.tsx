@@ -2,6 +2,7 @@ import { FlexWrapper } from "components/wrappers/FlexWrapper";
 import React from "react";
 import { Button } from "react-bootstrap";
 import styled from "styled-components";
+import { Color } from "../../constants";
 import { ModalBox } from "./ModalBox";
 
 interface IProps {
@@ -29,5 +30,5 @@ export const DeletePostModal: React.FC<IProps> = ({ onClose, onAccept }) => (
 );
 
 const Paragraph = styled(FlexWrapper)`
-  color: Color.BS_gray_800;
+  color: ${Color.BS_gray_800};
 `;
