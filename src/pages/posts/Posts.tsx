@@ -47,26 +47,33 @@ export const Posts: React.FC = () => {
   }, [fetchPostsCallback]);
 
   return (
-    <Parsing isLoading={isLoading}>
-      <TableCard
-        title="All Posts"
-        total={posts.articlesCount}
-        offset={offset ? Number(offset) : 0}
-        message={success}
-      >
+    <TableCard
+      title="All Posts"
+      total={posts.articlesCount}
+      offset={offset ? Number(offset) : 0}
+      limit={10}
+      message={success}
+    >
+      <Parsing isLoading={isLoading}>
         <TableMainContent tableHeader={PostsTableHeader}>
           {posts?.articles?.map((post, index) => (
-            <PostRow post={post} index={index} onDeleteClick={onDeleteClick} />
+            <PostRow
+              post={post}
+              index={index}
+              onDeleteClick={onDeleteClick}
+              offset={offset ? Number(offset) : 0}
+              limit={10}
+            />
           ))}
         </TableMainContent>
+      </Parsing>
 
-        {isModalDeleteVisible && slug !== "" && (
-          <DeletePostModal
-            onClose={toggleDeleteModal}
-            onAccept={onDeleteAccept}
-          />
-        )}
-      </TableCard>
-    </Parsing>
+      {isModalDeleteVisible && slug !== "" && (
+        <DeletePostModal
+          onClose={toggleDeleteModal}
+          onAccept={onDeleteAccept}
+        />
+      )}
+    </TableCard>
   );
 };

@@ -8,6 +8,7 @@ interface IProps {
   title: string;
   total?: number;
   offset?: number;
+  limit?: number;
   message?: string;
 }
 
@@ -17,6 +18,7 @@ export const TableCard: React.FC<IProps> = ({
   message,
   offset,
   total,
+  limit,
 }) => {
   return (
     <FlexWrapper flexDirection="column">
@@ -35,7 +37,10 @@ export const TableCard: React.FC<IProps> = ({
 
       {children}
 
-      <TableFooter current_page={offset || 1} pages={total ? total / 10 : 1} />
+      <TableFooter
+        current_page={offset || 1}
+        pages={total && limit ? total / limit : 1}
+      />
     </FlexWrapper>
   );
 };

@@ -9,18 +9,27 @@ import { ActionColumn, BodyColumn, CustomDropdown } from "./PostRowStyles";
 interface IProps {
   post: IPost;
   index: number;
+  offset: number;
+  limit: number;
   onDeleteClick: (slug: string) => void;
 }
 
 export const PostRow: React.FC<IProps> = ({
   post: { slug, title, author, tagList, body, createdAt },
   index,
+  limit,
+  offset,
   onDeleteClick,
 }) => {
   const timeStamp = new Date(createdAt);
+  console.log("----------------------------------------------");
+  console.log("offset: ", offset);
+  console.log("limit: ", limit);
+  console.log("index: ", index);
+
   return (
     <RowItem key={index}>
-      <ColumnItem>{index + 1}</ColumnItem>
+      <ColumnItem>{(offset - 1) * limit + index + 1}</ColumnItem>
 
       <ColumnItem>{title}</ColumnItem>
       <ColumnItem>{author.username}</ColumnItem>
