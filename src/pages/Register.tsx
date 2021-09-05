@@ -51,7 +51,7 @@ export const Register: React.FC = () => {
                 <LoginTitle>Register</LoginTitle>
                 <InputLabel label="User" name="username" />
                 <InputLabel label="Email" name="email" />
-                <InputLabel label="Password" name="password" />
+                <InputLabel label="Password" name="password" type="password" />
               </LoginRow>
               <LoginRow>
                 {isLoading ? (
