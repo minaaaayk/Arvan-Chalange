@@ -1,9 +1,9 @@
 import React from "react";
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import styled from "styled-components";
-import { Color, Path } from "../../constants";
+import { Path } from "../../constants";
 import { useAuthStore } from "../../store/AuthStore";
+import { HeaderWrapper, LogoutButton, UserName } from "./HeaderStyles";
 
 export const Header: React.FC = () => {
   const { logout, data: user } = useAuthStore();
@@ -13,9 +13,7 @@ export const Header: React.FC = () => {
       <HeaderWrapper>
         <Nav>
           <Navbar.Brand>Arvan Challenge</Navbar.Brand>
-          <UserName style={{ fontSize: "1em" }}>
-            Welcome {user?.username}
-          </UserName>
+          <UserName>Welcome {user?.username}</UserName>
         </Nav>
         <Nav className="justify-content-end">
           <LogoutButton
@@ -32,23 +30,3 @@ export const Header: React.FC = () => {
     </Navbar>
   );
 };
-
-const HeaderWrapper = styled(Container)`
-  display: flex;
-  justify-content: space-between;
-  margin-left: 0;
-  margin-right: 0;
-  min-width: 100%;
-  padding: 0.5rem 1.25rem;
-`;
-
-const LogoutButton = styled(Button)`
-  color: ${Color.BS_cyan};
-  border-color: ${Color.BS_cyan};
-`;
-
-const UserName = styled(Navbar.Brand)`
-  font-size: 1em;
-  align-items: center;
-  display: flex;
-`;
