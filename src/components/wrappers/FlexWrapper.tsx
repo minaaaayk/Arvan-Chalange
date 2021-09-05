@@ -18,7 +18,6 @@ interface IProps {
   gap?: string;
 }
 
-/** @deprecated use display:flex instead using this component   {*} */
 export const FlexWrapper = styled.div<IProps>`
   display: flex;
 
