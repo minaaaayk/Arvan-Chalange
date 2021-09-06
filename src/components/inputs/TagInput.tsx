@@ -30,7 +30,9 @@ export const TagInput: React.FC<IProps> = ({ defaultValues }) => {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       event.preventDefault();
-      appendTag(String(Object(event?.target).value || ""));
+      const newTag = String(Object(event?.target).value || "");
+      appendTag(newTag);
+      setCheckedValues([...(checkedValues ?? []), newTag]);
       setValue("newTag", "");
     }
   };
